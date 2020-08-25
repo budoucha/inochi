@@ -50,15 +50,15 @@ new p5(
 
     p.draw = () => {
       p.background(bgColor);
-      for(const cell in cells){
-        cells[cell].update();
+      for(const cell of cells){
+        cell.update();
         //random birth
         if(Math.random()>0.9 && cells.length<1024){
           //random eye
           const hasEye=Math.random()>0.7? true: false;
-          cells.push(new Cell(cells[cell].posX,cells[cell].posY,hasEye))
+          cells.push(new Cell(cell.posX,cell.posY,hasEye))
         }
-        cells[cell].draw();
+        cell.draw();
       }
     }
 
