@@ -1,4 +1,4 @@
-# mitzdeath
+# いのちの輝きシミュレーター
 例のアレ
 
-https://budoucha.github.io/mitzdeath/
+https://budoucha.github.io/inochi/
