@@ -8,7 +8,7 @@ new p5(
         posX=Math.random() * p.width, 
         posY=Math.random() * p.height,
         hasEye=false,
-        size=Math.random() * (10-5)+5
+        size=Math.random() * (16-8)+8
       ){
         this.posX=posX;
         this.posY=posY;
