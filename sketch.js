@@ -18,9 +18,12 @@ new p5(
 
       update() {
         //random size and position move
-        this.posX += Math.random() * (10 + 10) - 10
-        this.posY += Math.random() * (10 + 10) - 10
+        this.posX += Math.random() * (10 + 10) - 10;
+        if(this.posX >p.width || this.posX < 0){this.posX = Math.random() * p.width}
+        this.posY += Math.random() * (10 + 10) - 10;
+        if(this.posY >p.height || this.posY < 0){this.posY = Math.random() * p.height}
         this.size += Math.random() * (this.size / 15 + this.size / 16) - this.size / 16
+        if(this.size > p.width/16){this.size/=4;}
       }
 
       draw() {
