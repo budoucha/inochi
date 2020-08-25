@@ -58,7 +58,7 @@ new p5(
         if(Math.random()>0.9 && cells.length<1024){
           //random eye
           const hasEye=Math.random()>0.8? true: false;
-          cells.push(new Cell(cell.posX,cell.posY,hasEye))
+          cells.push(new Cell(cells[cell].posX,cells[cell].posY,hasEye))
         }
         cells[cell].draw();
       }
