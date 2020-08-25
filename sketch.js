@@ -69,7 +69,7 @@ new p5(
       }
       else{
       //create first cell
-      cells.push(new Cell(p.width/2, p.height/2,true));
+      cells.push(new Cell(p.mouseX, p.mouseY,true));
       console.log(cells[0]);
       }
     }
