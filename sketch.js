@@ -35,9 +35,9 @@ new p5(
 
         if(this.hasEye==true){
           p.fill(255);
-          p.ellipse(this.posX,this.posY,this.size/3,this.size/3);
+          p.ellipse(this.posX,this.posY,this.size/2,this.size/2);
           p.fill(64,128,255);
-          p.ellipse(this.posX,this.posY,this.size/6,this.size/6);
+          p.ellipse(this.posX,this.posY,this.size/4,this.size/4);
         }
       }
     }
