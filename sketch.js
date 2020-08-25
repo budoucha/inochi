@@ -45,7 +45,8 @@ new p5(
     const bgColor=216
 
     p.setup = () => {
-      p.createCanvas(800, 600);
+      canvas = p.createCanvas(800, 600);
+      canvas.parent("inochi");
       p.background(bgColor);
     }
 
@@ -75,6 +76,5 @@ new p5(
       }
     }
 
-  },
-  document.getElementById("inochi")
+  }
 );
