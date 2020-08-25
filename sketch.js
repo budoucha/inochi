@@ -14,8 +14,6 @@ new p5(
         this.posY=posY;
         this.hasEye=hasEye;
         this.size=size;
-        console.log("size: "+this.size);
-        console.log(posX,posY);
       }
 
       update(){
