@@ -5,42 +5,42 @@ new p5(
     class Cell {
       constructor(
         //random()*(max-min)+min
-        posX=Math.random() * p.width, 
-        posY=Math.random() * p.height,
-        hasEye=false,
-        size=Math.random() * (16-8)+8
-      ){
-        this.posX=posX;
-        this.posY=posY;
-        this.hasEye=hasEye;
-        this.size=size;
+        posX = Math.random() * p.width,
+        posY = Math.random() * p.height,
+        hasEye = false,
+        size = Math.random() * (16 - 8) + 8
+      ) {
+        this.posX = posX;
+        this.posY = posY;
+        this.hasEye = hasEye;
+        this.size = size;
       }
 
-      update(){
+      update() {
         //random size and position move
-        this.posX+=Math.random()*(10+10)-10
-        this.posY+=Math.random()*(10+10)-10
-        this.size+=Math.random()*(this.size/15 +this.size/16)-this.size/16
+        this.posX += Math.random() * (10 + 10) - 10
+        this.posY += Math.random() * (10 + 10) - 10
+        this.size += Math.random() * (this.size / 15 + this.size / 16) - this.size / 16
       }
 
-      draw(){
+      draw() {
         p.ellipseMode(p.CENTER);
         p.ellipseMode(p.RADIUS);
         p.noStroke();
-        p.fill(255,0,0);
-        p.ellipse(this.posX,this.posY,this.size,this.size);
-        p.ellipse(400,300);
+        p.fill(255, 0, 0);
+        p.ellipse(this.posX, this.posY, this.size, this.size);
+        p.ellipse(400, 300);
 
-        if(this.hasEye==true){
+        if (this.hasEye == true) {
           p.fill(255);
-          p.ellipse(this.posX,this.posY,this.size/2,this.size/2);
-          p.fill(64,128,255);
-          p.ellipse(this.posX,this.posY,this.size/4,this.size/4);
+          p.ellipse(this.posX, this.posY, this.size / 2, this.size / 2);
+          p.fill(64, 128, 255);
+          p.ellipse(this.posX, this.posY, this.size / 4, this.size / 4);
         }
       }
     }
 
-    const bgColor=216
+    const bgColor = 216
 
     p.setup = () => {
       canvas = p.createCanvas(800, 600);
@@ -50,27 +50,27 @@ new p5(
 
     p.draw = () => {
       p.background(bgColor);
-      for(const cell of cells){
+      for (const cell of cells) {
         cell.update();
         //random birth
-        if(Math.random()>0.9 && cells.length<1024){
+        if (Math.random() > 0.9 && cells.length < 1024) {
           //random eye
-          const hasEye=Math.random()>0.7? true: false;
-          cells.push(new Cell(cell.posX,cell.posY,hasEye))
+          const hasEye = Math.random() > 0.7 ? true : false;
+          cells.push(new Cell(cell.posX, cell.posY, hasEye))
         }
         cell.draw();
       }
     }
 
-    p.mouseClicked = () =>{
+    p.mouseClicked = () => {
       //clear array if exists
-      if(cells.length > 0){
+      if (cells.length > 0) {
         cells.length = 0;
       }
-      else{
-      //create first cell
-      cells.push(new Cell(p.mouseX, p.mouseY,true));
-      console.log(cells[0]);
+      else {
+        //create first cell
+        cells.push(new Cell(p.mouseX, p.mouseY, true));
+        console.log(cells[0]);
       }
     }
 
