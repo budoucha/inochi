@@ -8,7 +8,7 @@ new p5(
       update() {
         const fr= p.frameRate();
         if(fr < 25){
-          this.splice(this.length * 0.9);
+          this.splice(0, this.length/10);
           document.getElementById("inochinumber").textContent = "いのちの数： " + this.length;
         }
 
