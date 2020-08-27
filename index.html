@@ -22,15 +22,24 @@
     }
 
     .p5canvas {
-      margin: 2%;
+      margin: 10px;
     }
   </style>
 </head>
 
 <body>
   <h1>いのちの輝きシミュレーター</h1>
-  <h2>タップしてスタート</h2>
+  <div>
+    タップしていのちを開始/一時停止<br>
+    いのちは画像として保存できる
+  </div>
   <div class="p5canvas" id="inochi"></div>
+  <div style="margin-bottom:50px">
+    <h3><a href="index.html" style="color:red">
+      いのちを廃棄してリセット
+    </a></h3>
+  </div>
+
   <div><a href="https://twitter.com/share" class="twitter-share-button" text="いのちの輝きシミュレーター" data-size="large">Tweet</a>
   <script>
   !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } } (document, 'script', 'twitter-wjs');
