@@ -1,6 +1,7 @@
 new p5(
   p => {
     const cells = [];
+    let isRunning = false;
 
     class Cell {
       constructor(
@@ -54,28 +55,27 @@ new p5(
     }
 
     p.draw = () => {
-      p.background(bgColor);
-      for (const cell of cells) {
-        cell.update();
-        //random birth
-        if (Math.random() > 0.9 && cells.length < 1024) {
-          //random eye
-          const hasEye = Math.random() > 0.7 ? true : false;
-          cells.push(new Cell(cell.posX, cell.posY, hasEye))
+      if (isRunning) {
+        p.background(bgColor);
+        for (const cell of cells) {
+          cell.update();
+          //random birth
+          if (Math.random() > 0.9 && cells.length < 1024) {
+            //random eye
+            const hasEye = Math.random() > 0.7 ? true : false;
+            cells.push(new Cell(cell.posX, cell.posY, hasEye))
+          }
+          cell.draw();
         }
-        cell.draw();
       }
     }
 
     p.mouseClicked = () => {
-      //clear array if exists
-      if (cells.length > 0) {
-        cells.length = 0;
-      }
-      else {
+      isRunning = !isRunning;
+      if (cells.length == 0){
         //create first cell
         cells.push(new Cell(p.mouseX, p.mouseY, true));
-        console.log(cells[0]);
+        isRunning = true;
       }
     }
 
