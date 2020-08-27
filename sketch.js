@@ -13,6 +13,7 @@ new p5(
             //random eye
             const hasEye = Math.random() > 0.7;
             this.newCell(cell.posX, cell.posY, hasEye);
+            document.getElementById("inochinumber").textContent = "いのちの数： " + this.length;
           }
           cell.draw();
         }
