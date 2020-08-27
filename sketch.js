@@ -1,6 +1,25 @@
 new p5(
   p => {
-    const cells = [];
+    class Cells extends Array {
+      newCell(posX, posY, hasEye) {
+        this.push(new Cell(posX, posY, hasEye));
+      }
+
+      update() {
+        for (const cell of this) {
+          cell.update();
+          //random birth
+          if (Math.random() > 0.9 && this.length < 1024) {
+            //random eye
+            const hasEye = Math.random() > 0.7;
+            this.newCell(cell.posX, cell.posY, hasEye);
+          }
+          cell.draw();
+        }
+      }
+    }
+
+    const cells = new Cells;
     let isRunning = false;
 
     class Cell {
@@ -37,7 +56,7 @@ new p5(
         p.ellipse(this.posX, this.posY, this.size, this.size);
         p.ellipse(400, 300);
 
-        if (this.hasEye == true) {
+        if (this.hasEye) {
           p.fill(255);
           p.ellipse(this.posX, this.posY, this.size / 2, this.size / 2);
           p.fill(64, 128, 255);
@@ -57,25 +76,15 @@ new p5(
     p.draw = () => {
       if (isRunning) {
         p.background(bgColor);
-        for (const cell of cells) {
-          cell.update();
-          //random birth
-          if (Math.random() > 0.9 && cells.length < 1024) {
-            //random eye
-            const hasEye = Math.random() > 0.7 ? true : false;
-            cells.push(new Cell(cell.posX, cell.posY, hasEye))
-          }
-          cell.draw();
-        }
+        cells.update();
       }
     }
 
     p.mouseClicked = () => {
       isRunning = !isRunning;
-      if (cells.length == 0){
+      if (cells.length == 0) {
         //create first cell
-        cells.push(new Cell(p.mouseX, p.mouseY, true));
-        isRunning = true;
+        cells.newCell(p.mouseX, p.mouseY, true);
       }
     }
 
