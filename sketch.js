@@ -9,7 +9,7 @@ new p5(
         for (const cell of this) {
           cell.update();
           //random birth
-          if (Math.random() > 0.9 && this.length < 1024) {
+          if (Math.random() > 0.9 && p.frameRate() > 30) {
             //random eye
             const hasEye = Math.random() > 0.7;
             this.newCell(cell.posX, cell.posY, hasEye);
