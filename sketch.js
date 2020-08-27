@@ -6,10 +6,16 @@ new p5(
       }
 
       update() {
+        const fr= p.frameRate();
+        if(fr < 25){
+          this.splice(this.length * 0.9);
+          document.getElementById("inochinumber").textContent = "いのちの数： " + this.length;
+        }
+
         for (const cell of this) {
           cell.update();
           //random birth
-          if (Math.random() > 0.9 && p.frameRate() > 30) {
+          if (Math.random() > 0.9 && fr > 30) {
             //random eye
             const hasEye = Math.random() > 0.7;
             this.newCell(cell.posX, cell.posY, hasEye);
