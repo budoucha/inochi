@@ -6,10 +6,10 @@ new p5(
       }
 
       update() {
-        const fr= p.frameRate();
-        if(fr < 25){
-          this.splice(0, this.length/10);
-          document.getElementById("inochinumber").textContent = "いのちの数： " + this.length;
+        const fr = p.frameRate();
+        if (fr < 25) {
+          this.splice(0, this.length / 10);
+          this.showInochiNumber();
         }
 
         for (const cell of this) {
@@ -19,10 +19,14 @@ new p5(
             //random eye
             const hasEye = Math.random() > 0.7;
             this.newCell(cell.posX, cell.posY, hasEye);
-            document.getElementById("inochinumber").textContent = "いのちの数： " + this.length;
+            this.showInochiNumber();
           }
           cell.draw();
         }
+      }
+
+      showInochiNumber(){
+        document.getElementById("inochinumber").textContent = "いのちの数： " + this.length;
       }
     }
 
