@@ -48,14 +48,15 @@ new p5(
       }
 
       update() {
-        //random size and position move
+        //random size and move
         this.posX += Math.random() * (10 + 10) - 10;
-        this.posX = Math.max(this.posX, 0);
-        this.posX = Math.min(this.posX, p.width);
         this.posY += Math.random() * (10 + 10) - 10;
-        this.posY = Math.max(this.posY, 0);
-        this.posY = Math.min(this.posY, p.height);
-        this.size += Math.random() * (this.size / 15 + this.size / 16) - this.size / 16
+        this.size += Math.random() * (this.size / 15 + this.size / 16) - this.size / 16;
+
+        //position limit
+        this.posX = Math.max(0, Math.min(this.posX, p.width));
+        this.posY = Math.max(0, Math.min(this.posY, p.height));
+        //size limit
         if (this.size > p.width / 16) { this.size /= 4; }
       }
 
@@ -98,6 +99,5 @@ new p5(
         cells.newCell(p.mouseX, p.mouseY, true);
       }
     }
-
   }
 );
