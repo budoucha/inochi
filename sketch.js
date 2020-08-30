@@ -14,6 +14,11 @@ new p5(
 
         for (const cell of this) {
           cell.update();
+          if (!cell.isAlive) {
+            this.splice(this.indexOf(cell), 1);
+            continue;
+          }
+
           //random birth
           if (Math.random() > 0.9 && fr > 30) {
             //random eye
@@ -22,10 +27,12 @@ new p5(
             this.showInochiNumber();
           }
           cell.draw();
+          // zombie checkeer
+          if (!cell.isAlive) { console.log("dead walking!") }
         }
       }
 
-      showInochiNumber(){
+      showInochiNumber() {
         document.getElementById("inochinumber").textContent = "いのちの数： " + this.length;
       }
     }
@@ -45,6 +52,7 @@ new p5(
         this.posY = posY;
         this.hasEye = hasEye;
         this.size = size;
+        this.isAlive = true;
       }
 
       update() {
@@ -56,8 +64,8 @@ new p5(
         //position limit
         this.posX = Math.max(0, Math.min(this.posX, p.width));
         this.posY = Math.max(0, Math.min(this.posY, p.height));
-        //size limit
-        if (this.size > p.width / 16) { this.size /= 4; }
+        //death
+        if (this.size > p.width / 16 || this.size <= 0) { this.isAlive = false }
       }
 
       draw() {
