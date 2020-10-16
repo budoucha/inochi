@@ -74,7 +74,6 @@ new p5(
         p.noStroke();
         p.fill(255, 0, 0);
         p.ellipse(this.posX, this.posY, this.size, this.size);
-        p.ellipse(400, 300);
 
         if (this.hasEye) {
           p.fill(255);
